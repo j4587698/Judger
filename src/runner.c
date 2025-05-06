@@ -26,7 +26,7 @@ void init_result(struct result *_result) {
 }
 
 
-void run(struct config *_config, struct result *_result) {
+JUDGER_API void run(struct config *_config, struct result *_result) {
     // init log fp
     FILE *log_fp = log_open(_config->log_path);
 

@@ -4,6 +4,12 @@
 #include <sys/types.h>
 #include <stdio.h>
 
+#if defined(_WIN32)
+    #define JUDGER_API __declspec(dllexport)
+#else
+    #define JUDGER_API __attribute__ ((visibility ("default")))
+#endif
+
 // (ver >> 16) & 0xff, (ver >> 8) & 0xff, ver & 0xff  -> real version
 #define VERSION 0x020101
 
@@ -81,5 +87,5 @@ struct result {
 };
 
 
-void run(struct config *, struct result *);
+JUDGER_API void run(struct config *, struct result *);
 #endif //JUDGER_RUNNER_H
